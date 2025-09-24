@@ -1,0 +1,18 @@
+<ul>
+    <li>
+        <a [routerLink]="'/'" (contextmenu)="$event.preventDefault(); myMenuTrigger.openMenu()">
+            Database
+            (Right click for adding new connection)
+        </a>
+        <div [matMenuTriggerFor]="aboveMenu" #myMenuTrigger="matMenuTrigger"></div>
+    </li>
+    <li>
+        <a [routerLink]="'files'">Files</a>
+    </li>
+
+    <mat-menu #aboveMenu="matMenu" xPosition="after">
+        <button mat-menu-item (click)="tabsConfigService.addTab()">
+            Add Connection
+        </button>
+    </mat-menu>
+</ul>

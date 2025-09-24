@@ -1,0 +1,29 @@
+app-schema-tree {
+  overflow: auto;
+
+  .selected {
+    background-color: var(--mat-sys-on-surface);
+    color: var(--mat-sys-surface);
+  }
+
+  .schema-name {
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+mat-tree {
+  height: 100%;
+  overflow: auto;
+}
+
+.filter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+
+  mat-form-field {
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+<app-schema-tree [hidden]="!showSidebar()" appResizable="horizontal" [config]="config()"
+    (onDblClickNode)="showNode($event)" />
+
+<div class="container">
+    <div>
+        <button matIconButton (click)="toggleSidebar()">
+            <mat-icon>view_column_2</mat-icon>
+        </button>
+        <button matIconButton (click)="execute()">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button matIconButton (click)="clear()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" appResizable="vertical" />
+
+    <app-loading [isLoading]="queryResults.isLoading()" />
+
+    @if (!queryResults.isLoading())
+    {
+    @if (queryResults.error()) {
+    <p class="error">{{ queryResults.error() }}</p>
+    } @else {
+    <app-table-results [dataSource]="queryResults.value()" />
+    }
+    }
+</div>

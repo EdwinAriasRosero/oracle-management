@@ -1,0 +1,37 @@
+.file-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .upload-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  *[matlistitemtitle] {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .delete {
+      --mat-icon-color: red;
+    }
+  }
+}

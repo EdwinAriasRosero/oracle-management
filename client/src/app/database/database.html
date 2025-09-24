@@ -1,0 +1,18 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+    @for (tab of tabsConfigService.tabs(); track tab; let index = $index) {
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span class="tab-header">
+                {{ tab.name }}
+                <button matIconButton (click)="tabsConfigService.closeTab(tab)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </span>
+        </ng-template>
+
+        <app-working-area [config]="tab.config" />
+    </mat-tab>
+    }
+
+</mat-tab-group>

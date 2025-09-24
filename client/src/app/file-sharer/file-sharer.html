@@ -1,0 +1,42 @@
+<div class="file-container">
+    <h2>File Share</h2>
+
+    <div class="upload-section">
+        <input type="file" (change)="onFileSelected($event)">
+        <button matButton (click)="onUpload()" [disabled]="!selectedFile()">
+            Upload File
+        </button>
+    </div>
+
+    <div class="file-list">
+        @if(files.value().length > 0){
+
+        <mat-list>
+
+            <div mat-subheader>Files</div>
+            @for(file of files.value(); track file.name)
+            {
+            <mat-list-item>
+                <div matListItemTitle>
+                    <div class="file-actions">
+                        <button matIconButton class="delete" (click)="onDelete(file.name)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+
+                        <button matIconButton (click)="onDownload(file.name)">
+                            <mat-icon>download</mat-icon>
+                        </button>
+                    </div>
+
+                    <span (click)="onDownload(file.name)">{{ file.name }}</span>
+                </div>
+            </mat-list-item>
+            }
+
+        </mat-list>
+
+        }@else{
+        <p>No files found.</p>
+        }
+    </div>
+</div>

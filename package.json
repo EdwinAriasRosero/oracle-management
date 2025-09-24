@@ -1,0 +1,38 @@
+{
+  "name": "server-communication",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run start --prefix ./client",
+    "start:server": "npm run start:dev --prefix ./server",
+    "start:server-proxy": "npm run start --prefix ./server-proxy",
+    "start:app": "concurrently \"npm run start:server\" \"npm run start\"",
+    "install:client": "npm i --force --prefix ./client",
+    "install:server": "npm i --prefix ./server",
+    "install:server:proxy": "npm i --prefix ./server-proxy",
+    "install:all": "npm i && npm run install:client && npm run install:server && npm run install:server:proxy",
+    "build:client": "npm run build --prefix ./client",
+    "build:server": "npm run build --prefix ./server",
+    "zip:proxy": "node zip-script.js",
+    "copy:client:dist": "copyfiles -u 4 client/dist/client/browser/**/* dist/client/",
+    "copy:server:package": "copyfiles -u 1 server/package.json dist/server/",
+    "copy:server:node_modules": "copyfiles -u 1 server/node_modules/**/* dist/server/",
+    "copy:server:dist": "copyfiles -u 2 server/dist/**/* dist/server/",
+    "copy:all": "npm run copy:client:dist && npm run copy:server:dist && npm run copy:server:node_modules && npm run copy:server:package && npm run zip:proxy",
+    "build": "npm run build:client && npm run build:server && npm run copy:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node-forge": "^1.3.14",
+    "adm-zip": "^0.5.16",
+    "concurrently": "^9.2.1",
+    "copyfiles": "^2.4.1"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1"
+  }
+}

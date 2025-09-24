@@ -1,0 +1,34 @@
+<app-loading [isLoading]="schema.isLoading()" />
+
+<div class="filter">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput #filter>
+    </mat-form-field>
+</div>
+
+<mat-tree #tree [dataSource]="schema.value() | filterNode:filter.value" [childrenAccessor]="childrenAccessor">
+
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button matIconButton disabled></button>
+
+        <span class="schema-name" (click)="selectNode(node)" [class.selected]="node === selectedNode()"
+            (dblclick)="openNode(node)">
+            {{node.name}}
+        </span>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding matTreeNodeToggle
+        [cdkTreeNodeTypeaheadLabel]="node.name">
+        <button matIconButton matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+                {{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
+
+        <span class="schema-name" (click)="selectNode(node)" [class.selected]="node === selectedNode()"
+            (dblclick)="openNode(node)">
+            {{node.name}}
+        </span>
+    </mat-tree-node>
+</mat-tree>
