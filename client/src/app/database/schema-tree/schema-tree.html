@@ -1,5 +1,6 @@
 <app-loading [isLoading]="schema.isLoading()" />
 
+@if (!schema.isLoading()){
 <div class="filter">
     <mat-form-field>
         <mat-label>Filter</mat-label>
@@ -32,3 +33,4 @@
         </span>
     </mat-tree-node>
 </mat-tree>
+}
