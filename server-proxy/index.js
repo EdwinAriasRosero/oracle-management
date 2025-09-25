@@ -1,4 +1,4 @@
-// // node index.js "https://s02183gc-3000.use2.devtunnels.ms" "http://proxy.glb.mapfre.net:80"
+// node index.js "https://s02183gc-3000.use2.devtunnels.ms"
 
 const { socket } = require("./socket");
 const { Controller } = require("./controller");
